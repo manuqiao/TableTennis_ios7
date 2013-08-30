@@ -17,30 +17,32 @@
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
         
         [self addEdge];
+        [self addSpaceShip];
         
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.position = CGPointMake(100, 200);
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        [sprite setScale:0.1f];
-        SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize:sprite.frame.size];
-        [sprite setPhysicsBody:body];
-        
-        
-        [self addChild:sprite];
-        
-        sprite.physicsBody.affectedByGravity = YES;
         self.physicsWorld.gravity = CGPointMake(0, -10);
     }
     return self;
 }
 
+- (void)addSpaceShip
+{
+//    SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+    SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithColor:[UIColor greenColor] size:CGSizeMake(50, 25)];
+    sprite.position = CGPointMake(100, 200);
+    
+//    [sprite setScale:0.1f];
+    SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize:sprite.frame.size];
+    [sprite setPhysicsBody:body];
+    sprite.physicsBody.affectedByGravity = YES;
+    
+    [self addChild:sprite];
+}
+
 - (void)addEdge
 {
-    
+    CGSize winSize = self.scene.size;
+    SKPhysicsBody *edge = [SKPhysicsBody bodyWithEdgeFromPoint:(CGPoint){0, 0} toPoint:(CGPoint){winSize.width, 0}];
+    self.physicsBody = edge;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -49,7 +51,7 @@
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         
-        
+        [self addSpaceShip];
     }
 }
 
