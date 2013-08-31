@@ -9,5 +9,8 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface MyScene : SKScene
-
+{
+    CGPoint _touchStartPosition;
+    CGPoint _blockStartPosition;
+}
 @end

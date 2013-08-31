@@ -17,14 +17,14 @@
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
         
         [self addEdge];
-        [self addSpaceShip];
+        [self addBlock];
         
         self.physicsWorld.gravity = CGPointMake(0, -10);
     }
     return self;
 }
 
-- (void)addSpaceShip
+- (void)addBlock
 {
 //    SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
     SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithColor:[UIColor greenColor] size:CGSizeMake(50, 25)];
@@ -33,7 +33,8 @@
 //    [sprite setScale:0.1f];
     SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize:sprite.frame.size];
     [sprite setPhysicsBody:body];
-    sprite.physicsBody.affectedByGravity = YES;
+    sprite.physicsBody.affectedByGravity = NO;
+    [sprite setName:@"myBlock"];
     
     [self addChild:sprite];
 }
@@ -69,7 +70,27 @@
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         
-        [self addSpaceShip];
+        _touchStartPosition = location;
+        
+        SKSpriteNode *sprite = (SKSpriteNode *)[self childNodeWithName:@"myBlock"];
+        _blockStartPosition = sprite.position;
+        
+        NSLog(@"%.2f, %.2f", location.x, location.y);
+//        [self addBlock];
+    }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for (UITouch *touch in touches) {
+        CGPoint location = [touch locationInNode:self];
+        
+        SKSpriteNode *sprite = (SKSpriteNode *)[self childNodeWithName:@"myBlock"];
+        
+        CGPoint delta = CGPointMake(location.x - _touchStartPosition.x, location.y - _touchStartPosition.y);
+        CGPoint position = CGPointMake(_blockStartPosition.x + delta.x, _blockStartPosition.y + delta.y);
+        
+        [sprite setPosition:position];
     }
 }
 
