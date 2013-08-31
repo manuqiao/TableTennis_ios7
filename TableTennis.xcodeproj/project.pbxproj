@@ -470,6 +470,7 @@
 				532A6C7117CA1C66003898BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		532A6C7217CA1C66003898BD /* Build configuration list for PBXNativeTarget "TableTennisTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +479,7 @@
 				532A6C7417CA1C66003898BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
