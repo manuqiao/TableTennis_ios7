@@ -34,6 +34,21 @@
     
     SKSpriteNode *sprite2 = [self createBlockWithPosition:CGPointMake(winSize.width / 2, winSize.height)];
     [sprite2 setName:@"enemyBlock"];
+    [sprite2 runAction:
+     [SKAction sequence:
+      @[
+        [SKAction moveToX:sprite2.size.width / 2 duration:0.5f],
+        [SKAction repeatActionForever:
+         [SKAction sequence:
+          @[
+            [SKAction moveToX:winSize.width duration:1],
+            [SKAction moveToX:sprite2.size.width / 2 duration:1]
+            ]
+          ]
+         ]
+        ]
+      ]
+     ];
     
     [self addChild:sprite];
     [self addChild:sprite2];
@@ -100,7 +115,13 @@
     SKSpriteNode *block = (SKSpriteNode *)[self childNodeWithName:@"myBlock"];
     
     SKPhysicsJointSliding *joint = [SKPhysicsJointSliding jointWithBodyA:edgeLeft.physicsBody bodyB:block.physicsBody anchor:block.position axis:CGPointMake(1, 0)];
+    
+    SKSpriteNode *block2 = (SKSpriteNode *)[self childNodeWithName:@"enemyBlock"];
+    
+    SKPhysicsJointSliding *joint2 = [SKPhysicsJointSliding jointWithBodyA:edgeLeft.physicsBody bodyB:block2.physicsBody anchor:block2.position axis:CGPointMake(1, 0)];
+    
     [self.physicsWorld addJoint:joint];
+    [self.physicsWorld addJoint:joint2];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
