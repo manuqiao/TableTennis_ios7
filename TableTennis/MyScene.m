@@ -18,6 +18,7 @@
         
         [self addEdge];
         [self addBlock];
+        [self addJoint];
         
         self.physicsWorld.gravity = CGPointMake(0, -10);
     }
@@ -44,9 +45,11 @@
     CGSize winSize = self.scene.size;
     
     SKSpriteNode *edgeLeft = [self createEdgeWithSize:CGSizeMake(1, winSize.height)];
+    [edgeLeft setName:@"edgeLeft"];
     [edgeLeft setPosition:CGPointMake(0, winSize.height / 2)];
     
     SKSpriteNode *edgeRight = [self createEdgeWithSize:CGSizeMake(1, winSize.height)];
+    [edgeRight setName:@"edgeRight"];
     [edgeRight setPosition:CGPointMake(winSize.width, winSize.height / 2)];
     
 //    SKSpriteNode *edgeBottom = [self createEdgeWithSize:CGSizeMake(winSize.width, 1)];
@@ -78,6 +81,15 @@
         NSLog(@"%.2f, %.2f", location.x, location.y);
 //        [self addBlock];
     }
+}
+
+- (void)addJoint
+{
+    SKSpriteNode *edgeLeft = (SKSpriteNode *)[self childNodeWithName:@"edgeLeft"];
+    SKSpriteNode *block = (SKSpriteNode *)[self childNodeWithName:@"myBlock"];
+    
+    SKPhysicsJointSliding *joint = [SKPhysicsJointSliding jointWithBodyA:edgeLeft.physicsBody bodyB:block.physicsBody anchor:block.position axis:CGPointMake(0, 1)];
+    [self.physicsWorld addJoint:joint];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
