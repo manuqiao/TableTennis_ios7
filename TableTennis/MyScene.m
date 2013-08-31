@@ -41,10 +41,28 @@
 - (void)addEdge
 {
     CGSize winSize = self.scene.size;
-    SKPhysicsBody *edge = [SKPhysicsBody bodyWithEdgeFromPoint:(CGPoint){0, 0} toPoint:(CGPoint){winSize.width, 0}];
-    self.physicsBody = edge;
+    
+    SKSpriteNode *edgeLeft = [self createEdgeWithSize:CGSizeMake(1, winSize.height)];
+    [edgeLeft setPosition:CGPointMake(0, winSize.height / 2)];
+    
+    SKSpriteNode *edgeRight = [self createEdgeWithSize:CGSizeMake(1, winSize.height)];
+    [edgeRight setPosition:CGPointMake(winSize.width, winSize.height / 2)];
+    
+//    SKSpriteNode *edgeBottom = [self createEdgeWithSize:CGSizeMake(winSize.width, 1)];
+//    [edgeBottom setPosition:CGPointMake(winSize.width / 2, 0)];
+    
+    [self addChild:edgeLeft];
+    [self addChild:edgeRight];
+//    [self addChild:edgeBottom];
 }
 
+- (SKSpriteNode *)createEdgeWithSize:(CGSize)size
+{
+    SKSpriteNode *edge = [[SKSpriteNode alloc] initWithColor:[UIColor greenColor] size:size];
+    edge.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:edge.frame.size];
+    edge.physicsBody.dynamic = NO;
+    return edge;
+}
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
