@@ -27,17 +27,28 @@
 
 - (void)addBlock
 {
-//    SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-    SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithColor:[UIColor greenColor] size:CGSizeMake(50, 25)];
-    sprite.position = CGPointMake(100, 200);
+    CGSize winSize = self.scene.size;
     
-//    [sprite setScale:0.1f];
+    SKSpriteNode *sprite = [self createBlockWithPosition:CGPointMake(winSize.width / 2, 0)];
+    [sprite setName:@"myBlock"];
+    
+    SKSpriteNode *sprite2 = [self createBlockWithPosition:CGPointMake(winSize.width / 2, winSize.height)];
+    [sprite2 setName:@"enemyBlock"];
+    
+    [self addChild:sprite];
+    [self addChild:sprite2];
+}
+
+- (SKSpriteNode *)createBlockWithPosition:(CGPoint)position
+{
+    SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithColor:[UIColor greenColor] size:CGSizeMake(50, 25)];
+    sprite.position = position;
+    
     SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize:sprite.frame.size];
     [sprite setPhysicsBody:body];
     sprite.physicsBody.affectedByGravity = NO;
-    [sprite setName:@"myBlock"];
     
-    [self addChild:sprite];
+    return sprite;
 }
 
 - (void)addEdge
@@ -88,7 +99,7 @@
     SKSpriteNode *edgeLeft = (SKSpriteNode *)[self childNodeWithName:@"edgeLeft"];
     SKSpriteNode *block = (SKSpriteNode *)[self childNodeWithName:@"myBlock"];
     
-    SKPhysicsJointSliding *joint = [SKPhysicsJointSliding jointWithBodyA:edgeLeft.physicsBody bodyB:block.physicsBody anchor:block.position axis:CGPointMake(0, 1)];
+    SKPhysicsJointSliding *joint = [SKPhysicsJointSliding jointWithBodyA:edgeLeft.physicsBody bodyB:block.physicsBody anchor:block.position axis:CGPointMake(1, 0)];
     [self.physicsWorld addJoint:joint];
 }
 
