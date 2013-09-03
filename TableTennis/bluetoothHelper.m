@@ -12,7 +12,7 @@
 
 static bluetoothHelper *_instance;
 
-- (bluetoothHelper *)sharedInstance
++ (bluetoothHelper *)sharedInstance
 {
     if (_instance == nil) {
         _instance = [[bluetoothHelper alloc] init];

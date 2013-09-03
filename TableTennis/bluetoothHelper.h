@@ -11,6 +11,8 @@
 @interface bluetoothHelper : NSObject <GKPeerPickerControllerDelegate, GKSessionDelegate>
 @property (nonatomic, strong) GKPeerPickerController *picker;
 @property (nonatomic, strong) GKSession *session;
++ (bluetoothHelper *)sharedInstance;
 - (void)connect;
 - (void)sendData:(id)sender;
+
 @end
