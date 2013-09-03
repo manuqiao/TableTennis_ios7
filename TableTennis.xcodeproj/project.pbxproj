@@ -24,6 +24,9 @@
 		532A6C6217CA1C66003898BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532A6C3D17CA1C65003898BD /* UIKit.framework */; };
 		532A6C6A17CA1C66003898BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 532A6C6817CA1C66003898BD /* InfoPlist.strings */; };
 		532A6C6C17CA1C66003898BD /* TableTennisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 532A6C6B17CA1C66003898BD /* TableTennisTests.m */; };
+		5343DA9117D5B39C0057B546 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5343DA9017D5B39C0057B546 /* GameKit.framework */; };
+		539C2B3917D593EE00238CDA /* welcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 539C2B3817D593EE00238CDA /* welcomeViewController.m */; };
+		539C2B3A17D593EE00238CDA /* welcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 539C2B3817D593EE00238CDA /* welcomeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,9 @@
 		532A6C6717CA1C66003898BD /* TableTennisTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TableTennisTests-Info.plist"; sourceTree = "<group>"; };
 		532A6C6917CA1C66003898BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		532A6C6B17CA1C66003898BD /* TableTennisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableTennisTests.m; sourceTree = "<group>"; };
+		5343DA9017D5B39C0057B546 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		539C2B3717D593EE00238CDA /* welcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = welcomeViewController.h; sourceTree = "<group>"; };
+		539C2B3817D593EE00238CDA /* welcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = welcomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5343DA9117D5B39C0057B546 /* GameKit.framework in Frameworks */,
 				532A6C3C17CA1C65003898BD /* CoreGraphics.framework in Frameworks */,
 				532A6C3E17CA1C65003898BD /* UIKit.framework in Frameworks */,
 				532A6C4017CA1C65003898BD /* SpriteKit.framework in Frameworks */,
@@ -109,6 +116,7 @@
 		532A6C3817CA1C65003898BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5343DA9017D5B39C0057B546 /* GameKit.framework */,
 				532A6C3917CA1C65003898BD /* Foundation.framework */,
 				532A6C3B17CA1C65003898BD /* CoreGraphics.framework */,
 				532A6C3D17CA1C65003898BD /* UIKit.framework */,
@@ -124,6 +132,8 @@
 				532A6C4A17CA1C65003898BD /* AppDelegate.h */,
 				532A6C4B17CA1C65003898BD /* AppDelegate.m */,
 				532A6C4D17CA1C65003898BD /* Main.storyboard */,
+				539C2B3717D593EE00238CDA /* welcomeViewController.h */,
+				539C2B3817D593EE00238CDA /* welcomeViewController.m */,
 				532A6C5017CA1C65003898BD /* ViewController.h */,
 				532A6C5117CA1C65003898BD /* ViewController.m */,
 				532A6C5317CA1C65003898BD /* MyScene.h */,
@@ -265,6 +275,7 @@
 				532A6C5517CA1C65003898BD /* MyScene.m in Sources */,
 				532A6C5217CA1C65003898BD /* ViewController.m in Sources */,
 				532A6C4C17CA1C65003898BD /* AppDelegate.m in Sources */,
+				539C2B3917D593EE00238CDA /* welcomeViewController.m in Sources */,
 				532A6C4817CA1C65003898BD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				532A6C6C17CA1C66003898BD /* TableTennisTests.m in Sources */,
+				539C2B3A17D593EE00238CDA /* welcomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
