@@ -30,11 +30,9 @@
     CGSize winSize = self.scene.size;
     
     SKSpriteNode *sprite = [self createBlockWithPosition:CGPointMake(winSize.width / 2, 0)];
-    [sprite setPosition:CGPointMake(sprite.position.x, sprite.frame.size.height)];
     [sprite setName:@"myBlock"];
     
     SKSpriteNode *sprite2 = [self createBlockWithPosition:CGPointMake(winSize.width / 2, winSize.height)];
-    [sprite2 setPosition:CGPointMake(sprite2.position.x, sprite2.position.y - sprite2.frame.size.height)];
     [sprite2 setName:@"enemyBlock"];
     [sprite2 runAction:
      [SKAction sequence:
