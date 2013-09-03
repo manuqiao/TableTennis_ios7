@@ -144,4 +144,14 @@
     /* Called before each frame is rendered */
 }
 
+- (void)sendData:(NSString *)json
+{
+    
+}
+
+- (void)receiveData:(NSString *)json
+{
+    
+}
+
 @end

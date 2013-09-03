@@ -13,4 +13,7 @@
     CGPoint _touchStartPosition;
     CGPoint _blockStartPosition;
 }
+
+- (void)sendData:(NSString *)json;
+- (void)receiveData:(NSString *)json;
 @end
